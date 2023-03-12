@@ -33,7 +33,10 @@ vim.cmd.packadd "packer.nvim"
 require("packer").startup(function()
   -- 起動時に読み込むプラグインは名前を書くだけです
   -- GitHubのリポジトリ名称
+  use "nvim-lua/plenary.nvim"
   use "preservim/nerdtree"
+  use "nvim-telescope/telescope.nvim"
+  use "raphamorim/lucario"
   use "tpope/vim-fugitive"
   use "tpope/vim-repeat"
 
