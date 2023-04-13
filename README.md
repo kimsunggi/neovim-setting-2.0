@@ -20,9 +20,34 @@ nvim ~/.config/nvim/init.lua
 ```
 
 ```lua
+-- ~/.config/nvim/lua/plugins.luaを読み込む
 require "plugins"
+
+-- load the "vim" module
+vim = vim or {}
+
+
+vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
+vim.opt.cursorline = true                       -- highlight the current line
+vim.opt.number = true                           -- set numbered lines
+vim.opt.shiftwidth = 2
+
+vim.cmd("colorscheme lucario")
+
+--ショートカット
+vim.cmd 'nnoremap gr gT'
+vim.cmd 'nnoremap <C-e> :NERDTreeToggle<CR>'       --ファイルツリー
+vim.cmd 'nnoremap <C-p> :Telescope find_files<CR>' --ファイル検索
+vim.cmd 'nnoremap <C-g> :Telescope live_grep<CR>'  --ライブgrep
+--ショートカット
+
+
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "plugins.lua" },
+  command = "PackerCompile",
+})
 ```
-~/.config/nvim/lua/plugins.luaを読み込んでくれる   
 
 ```
 vim ~/.config/nvim/lua/plugins.lua
